@@ -1,0 +1,182 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4rem;
+    background: url('Building.PNG') no-repeat center center fixed; /* Background image */
+    background-size: cover; /* Ensure it covers the entire screen */
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6); /* White overlay with 50% transparency */
+    backdrop-filter: blur(2px); /* Add a blur effect to the image */
+    z-index: -1; /* Keep the overlay behind all content */
+}
+
+/* Header Styling */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 0;
+    background-color: rgba(0, 123, 255, 0.7); /* More transparent blue */
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* Main Content Styling */
+#content {
+    backdrop-filter: blur(10px); /* Add blur effect to the content area */
+    background-color: rgba(255, 255, 255, 0.8); /* White with slight transparency */
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 900px; /* Set max width for the content area */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Intro Section */
+#intro {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Header Grid */
+.header-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#info {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+#buttons {
+    text-align: right;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Typing Game */
+div#game {
+    line-height: 35px;
+    height: 300px; /* Increased height for more lines */
+    overflow: hidden;
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+div#game:focus {
+    outline: 3px solid #007bff; /* Highlight when focused */
+}
+
+#words {
+    filter: blur(5px);
+    color: #333;
+}
+
+#game:focus #words {
+    filter: blur(0);
+}
+
+#focus-error {
+    position: absolute;
+    inset: 0;
+    text-align: center;
+    padding-top: 35px;
+    color: #ff0000;
+}
+
+#game:focus #focus-error {
+    display: none;
+}
+
+div.word {
+    display: inline-block;
+    font-family: 'Roboto Mono', monospace;
+    margin: 0 5px;
+}
+
+.letter.correct {
+    color: #008000; /* Green for correct letters */
+}
+
+.letter.incorrect {
+    color: #ff0000; /* Red for incorrect letters */
+}
+
+#cursor {
+    position: absolute;
+    width: 3px;
+    height: 1.6rem;
+    background-color: black;
+    animation: blink 0.5s step-start infinite;
+    display: none;
+    z-index: 10;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Glow for visibility */
+    border-radius: 2px;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+#game.over #words {
+    opacity: 0.5;
+    filter: blur(0px);
+}
+
+#game.over:focus #cursor {
+    display: none;
+}
